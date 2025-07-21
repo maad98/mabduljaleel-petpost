@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PetPost</title>
+</head>
+<body>
+    <h1>Adoptable Pets</h1>
+
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <input type="text" name="name" placeholder="Pet Name" required><br>
+        <input type="text" name="age" placeholder="Age" required><br>
+        <input type="text" name="breed" placeholder="Breed" required><br>
+        <input type="file" name="image" accept="image/*" required><br>
+        <button type="submit">Add Pet</button>
+    </form>
+
+    <hr>
+
+    {% for pet in pets %}
+        <div>
+            <h2>{{ pet.name }} ({{ pet.age }})</h2>
+            <p>Breed: {{ pet.breed }}</p>
+            <img src="{{ pet.image_url }}" alt="{{ pet.name }}" width="200">
+        </div>
+    {% endfor %}
+</body>
+</html>
+
